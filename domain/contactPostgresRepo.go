@@ -41,7 +41,6 @@ func (c *ContactPostgresRepo) FindWithField(coSeaDto dto.ContactSearchRequestDto
 		Preload("PhoneNumbers").
 		Distinct().
 		Find(&contacts).Error
-
 	if err != nil {
 		return nil, errs.NewUnexpectedError(err.Error())
 	}

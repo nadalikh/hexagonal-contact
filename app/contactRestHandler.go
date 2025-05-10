@@ -1,7 +1,9 @@
 package app
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
+	"graph/domain"
 	"graph/dto"
 	"graph/service"
 	"net/http"
@@ -25,7 +27,7 @@ func (coResHan *ContactRestHandler) CreateOne(c *gin.Context) {
 		c.AbortWithStatusJSON(err.Code, Response{Message: err.Message})
 		return
 	} else {
-		c.JSON(http.StatusCreated, Response{Message: SUCCESSFULL_ADDING_CONATACT, Data: contact})
+		c.JSON(http.StatusCreated, Response{Message: SUCCESSFULL_ADDING_CONATACT, Data: contact.ToDto()})
 	}
 }
 func (coResHan *ContactRestHandler) Search(c *gin.Context) {
@@ -34,7 +36,10 @@ func (coResHan *ContactRestHandler) Search(c *gin.Context) {
 		c.AbortWithStatusJSON(err.Code, Response{Message: err.Message})
 		return
 	} else {
-		c.JSON(http.StatusOK, Response{Data: contact})
+		test := domain.ListToDto(contact)
+		fmt.Println("len of res: ", len(test))
+		fmt.Println("len of main res: ", len(contact))
+		c.JSON(http.StatusOK, Response{Data: test})
 	}
 }
 
@@ -48,6 +53,6 @@ func (coResHan *ContactRestHandler) Update(c *gin.Context) {
 		c.AbortWithStatusJSON(err.Code, Response{Message: err.Message})
 		return
 	} else {
-		c.JSON(http.StatusOK, Response{Message: SUCCESSFULL_UPDATE_CONATACT, Data: contact})
+		c.JSON(http.StatusOK, Response{Message: SUCCESSFULL_UPDATE_CONATACT, Data: contact.ToDto()})
 	}
 }

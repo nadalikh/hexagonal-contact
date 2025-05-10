@@ -7,7 +7,11 @@ type AddPhoneNumberRequestDto struct {
 	Number    string `json:"number" binding:"required,phone"`
 	ContactId string `json:"contact_id"`
 }
-type PhoneNumberUpdateRequest struct {
+type PhoneNumberUpdateRequestDto struct {
 	Number  string `json:"number" binding:"phone"`
 	PhoneId string `json:"phone_id"`
+}
+type PhoneNumberResponseDto struct {
+	BaseDtoResponse
+	Number string `json:"number"`
 }

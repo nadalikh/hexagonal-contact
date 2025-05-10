@@ -17,3 +17,15 @@ type PhoneNumberRepo interface {
 type PhoneNumberServicePrototype interface {
 	AddOne(coDto dto.AddPhoneNumberRequestDto) *errs.AppError
 }
+
+func (p *PhoneNumber) ToDto() dto.PhoneNumberResponseDto {
+	return dto.PhoneNumberResponseDto{
+		BaseDtoResponse: dto.BaseDtoResponse{
+			ID:        p.ID,
+			CreatedAt: p.CreatedAt,
+			UpdatedAt: p.UpdatedAt,
+			DeletedAt: p.DeletedAt,
+		},
+		Number: p.Number,
+	}
+}

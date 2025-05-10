@@ -39,11 +39,11 @@ func NewSystemConfig() *SystemConfig {
 		Port:   os.Getenv("PORT"),
 	}
 	systemConfig.PostgresConfig = Postgress{
-		Server:   os.Getenv("MYSQL_SERVER"),
-		Port:     os.Getenv("MYSQL_PORT"),
-		DBName:   os.Getenv("MYSQL_DB"),
-		Username: os.Getenv("MYSQL_USER"),
-		Password: os.Getenv("MYSQL_PASSWORD"),
+		Server:   os.Getenv("POSTGRES_SERVER"),
+		Port:     os.Getenv("POSTGRES_PORT"),
+		DBName:   os.Getenv("POSTGRES_DB"),
+		Username: os.Getenv("POSTGRES_USER"),
+		Password: os.Getenv("POSTGRES_PASSWORD"),
 	}
 	systemConfig.Gin = GinConfig{
 		ReleaseMode: os.Getenv("GIN_MODE") == "release",
