@@ -85,3 +85,10 @@ func (c *ContactPostgresRepo) Update(coUpdDto dto.ContactUpdateRequestDto) (*Con
 
 	return &updatedContact, nil
 }
+func (r *ContactPostgresRepo) CheckPhoneExistence(number string) (bool, *errs.AppError) {
+	var count int64
+	if err := r.db.Model(&PhoneNumber{}).Where("number = ?", number).Count(&count).Error; err != nil {
+		return false, errs.NewUnexpectedError(err.Error())
+	}
+	return count > 0, nil
+}

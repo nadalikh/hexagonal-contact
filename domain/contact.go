@@ -16,6 +16,7 @@ type ContactRepo interface {
 	Create(coDto dto.ContactRequestDto) (*Contact, *errs.AppError)
 	FindWithField(coDto dto.ContactSearchRequestDto) ([]Contact, *errs.AppError)
 	Update(coUpdDto dto.ContactUpdateRequestDto) (*Contact, *errs.AppError)
+	CheckPhoneExistence(number string) (bool, *errs.AppError)
 }
 type ContactServicePrototype interface {
 	MakeOne(coDto dto.ContactRequestDto) (*Contact, *errs.AppError)
