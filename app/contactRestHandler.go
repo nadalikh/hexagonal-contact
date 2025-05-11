@@ -36,10 +36,7 @@ func (coResHan *ContactRestHandler) Search(c *gin.Context) {
 		c.AbortWithStatusJSON(err.Code, Response{Message: err.Message})
 		return
 	} else {
-		test := domain.ListToDto(contact)
-		fmt.Println("len of res: ", len(test))
-		fmt.Println("len of main res: ", len(contact))
-		c.JSON(http.StatusOK, Response{Data: test})
+		c.JSON(http.StatusOK, Response{Data: domain.ListToDto(contact)})
 	}
 }
 
