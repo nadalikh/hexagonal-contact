@@ -32,7 +32,6 @@ func (c *Contact) FromDto(coDto *dto.ContactRequestDto) {
 func (c *Contact) ToDto() dto.ContactResponseDto {
 	phoneNumbers := make([]dto.PhoneNumberResponseDto, 0)
 	for _, phoneNumber := range c.PhoneNumbers {
-		fmt.Println("phonen:", phoneNumber.ID)
 		phoneNumbers = append(phoneNumbers, phoneNumber.ToDto())
 	}
 	return dto.ContactResponseDto{
@@ -48,12 +47,9 @@ func (c *Contact) ToDto() dto.ContactResponseDto {
 	}
 }
 func ListToDto(contacts []Contact) []dto.ContactResponseDto {
-	fmt.Println("len of contancts: ", len(contacts))
 	dtoContacts := make([]dto.ContactResponseDto, 0)
 	for _, contact := range contacts {
-		fmt.Println("id list to do", contact.ID)
 		dtoContacts = append(dtoContacts, contact.ToDto())
 	}
-	fmt.Println("len of res: ", len(dtoContacts))
 	return dtoContacts
 }
