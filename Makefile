@@ -1,3 +1,3 @@
 build:
-	go build ./cmd/server.go
-	go build ./cmd/client.go
+	go build -o ./pbserver ./cmd/server.go
+	go build -o ./pbclient ./cmd/client.go
